@@ -2,7 +2,7 @@
 %define version	3.1.1
 %define release %mkrel 2
 
-Summary:	A utility for monitoring system logs files.
+Summary:	A utility for monitoring system logs files
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
