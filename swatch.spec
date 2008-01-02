@@ -15,6 +15,7 @@ Source2:	README-mandrake.bz2
 BuildRequires:	perl-devel perl-File-Tail perl-Date-Calc perl-Time-HiRes perl-TimeDate
 Requires:	perl perl-File-Tail perl-Date-Calc perl-Time-HiRes perl-TimeDate
 BuildArch:	noarch
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The Swatch utility monitors system log files, filters out unwanted data
