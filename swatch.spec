@@ -1,11 +1,10 @@
 %define name	swatch
 %define version	3.1.1
-%define release %mkrel 2
 
 Summary:	A utility for monitoring system logs files
 Name:		%{name}
 Version:	%{version}
-Release:	%{release}
+Release:	%mkrel 3
 License:	GPL
 Group:		Monitoring
 Source0:	%{name}-%{version}.tar.bz2
