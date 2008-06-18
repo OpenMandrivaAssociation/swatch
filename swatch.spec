@@ -4,7 +4,7 @@
 Summary:	A utility for monitoring system logs files
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPL
 Group:		Monitoring
 Source0:	%{name}-%{version}.tar.bz2
