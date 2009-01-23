@@ -1,10 +1,10 @@
 %define name	swatch
-%define version	3.1.1
+%define version	3.2.1
 
 Summary:	A utility for monitoring system logs files
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 4
+Release:	%mkrel 1
 License:	GPL
 Group:		Monitoring
 Source0:	%{name}-%{version}.tar.bz2
@@ -51,7 +51,7 @@ rm -rf $RPM_BUILD_ROOT%{perl_vendorlib}/auto
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files 
+%files
 %defattr(-,root,root)
 %doc CHANGES INSTALL COPYRIGHT KNOWN_BUGS README* examples tools
 %{_bindir}/swatch
