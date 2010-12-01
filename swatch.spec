@@ -1,13 +1,13 @@
 %define name	swatch
-%define version	3.2.1
+%define version	3.2.3
 
 Summary:	A utility for monitoring system logs files
-Name:		%{name}
-Version:	%{version}
-Release:	%mkrel 3
-License:	GPL
+Name:		swatch
+Version:	3.2.3
+Release:	%mkrel 1
+License:	GPLv2
 Group:		Monitoring
-Source0:	%{name}-%{version}.tar.bz2
+Source0:	%{name}-%{version}.tar.gz
 URL:		http://swatch.sourceforge.net/
 Source1:	swatchrc.bz2
 Source2:	README-mandrake.bz2
