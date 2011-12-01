@@ -37,14 +37,14 @@ make test
 rm -rf %{buildroot}
 eval `perl '-V:installarchlib'`
 mkdir -p %{buildroot}/$installarchlib
-perl -pi -e "s|^(INSTALLMAN1DIR\s=\s/usr/share/man/man1)|INSTALLMAN1DIR = \\$\(PREFIX\)/share/man/man1|" $RPM_BUILD_DIR/%{name}-%{version}/Makefile
+perl -pi -e "s|^(INSTALLMAN1DIR\s=\s/usr/share/man/man1)|INSTALLMAN1DIR = \\$\(PREFIX\)/share/man/man1|" %{_builddir}/%{name}-%{version}/Makefile
 %{makeinstall_std}
 install tools/swatch_oldrc2newrc -D %{buildroot}%{_bindir}/swatch_oldrc2newrc
 
 mkdir -p %{buildroot}%{_sysconfdir}
 bzcat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/swatchrc
 
-bzcat %{SOURCE2} >> $RPM_BUILD_DIR/%{name}-%{version}/README-Mandrake
+bzcat %{SOURCE2} >> %{_builddir}/%{name}-%{version}/README-Mandrake
 
 rm -rf %{buildroot}%{perl_vendorlib}/auto
 
