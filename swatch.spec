@@ -34,22 +34,22 @@ CFLAGS="$RPM_OPT_FLAGS" perl Makefile.PL INSTALLDIRS=vendor
 make test
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 eval `perl '-V:installarchlib'`
-mkdir -p $RPM_BUILD_ROOT/$installarchlib
+mkdir -p %{buildroot}/$installarchlib
 perl -pi -e "s|^(INSTALLMAN1DIR\s=\s/usr/share/man/man1)|INSTALLMAN1DIR = \\$\(PREFIX\)/share/man/man1|" $RPM_BUILD_DIR/%{name}-%{version}/Makefile
 %{makeinstall_std}
-install tools/swatch_oldrc2newrc -D $RPM_BUILD_ROOT%{_bindir}/swatch_oldrc2newrc
+install tools/swatch_oldrc2newrc -D %{buildroot}%{_bindir}/swatch_oldrc2newrc
 
 mkdir -p %{buildroot}%{_sysconfdir}
 bzcat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/swatchrc
 
 bzcat %{SOURCE2} >> $RPM_BUILD_DIR/%{name}-%{version}/README-Mandrake
 
-rm -rf $RPM_BUILD_ROOT%{perl_vendorlib}/auto
+rm -rf %{buildroot}%{perl_vendorlib}/auto
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
