@@ -4,7 +4,7 @@
 Summary:	A utility for monitoring system logs files
 Name:		swatch
 Version:	3.2.3
-Release:	11
+Release:	12
 License:	GPLv2
 Group:		Monitoring
 Source0:	%{name}-%{version}.tar.gz
