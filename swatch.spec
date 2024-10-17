@@ -8,7 +8,7 @@ Release:	14
 License:	GPLv2
 Group:		Monitoring
 Source0:	%{name}-%{version}.tar.gz
-URL:		http://swatch.sourceforge.net/
+URL:		https://swatch.sourceforge.net/
 Source1:	swatchrc.bz2
 Source2:	README-mandrake.bz2
 BuildRequires:	perl-devel perl-File-Tail perl-Date-Calc perl-Time-HiRes perl-TimeDate
