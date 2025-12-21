@@ -11,6 +11,7 @@ Source0:	%{name}-%{version}.tar.gz
 URL:		https://swatch.sourceforge.net/
 Source1:	swatchrc.bz2
 Source2:	README-mandrake.bz2
+BuildRequires:	make
 BuildRequires:	perl-devel perl-File-Tail perl-Date-Calc perl-Time-HiRes perl-TimeDate
 Requires:	perl perl-File-Tail perl-Date-Calc perl-Time-HiRes perl-TimeDate
 BuildArch:	noarch
