@@ -1,10 +1,10 @@
 %define name	swatch
-%define version	3.2.3
+%define version	3.2.4
 
 Summary:	A utility for monitoring system logs files
 Name:		swatch
-Version:	3.2.3
-Release:	14
+Version:	3.2.4
+Release:	1
 License:	GPLv2
 Group:		Monitoring
 Source0:	%{name}-%{version}.tar.gz
@@ -26,7 +26,8 @@ Install the swatch package if you need a program that will monitor log
 files and alert you in certain situations.
 
 %prep
-%setup -q
+# 3.2.4 ships the program as swatchdog and unpacks as swatchdog-%{version}.
+%setup -q -n swatchdog-%{version}
 CFLAGS="$RPM_OPT_FLAGS" perl Makefile.PL INSTALLDIRS=vendor
 
 %make
@@ -38,14 +39,17 @@ make test
 rm -rf $RPM_BUILD_ROOT
 eval `perl '-V:installarchlib'`
 mkdir -p $RPM_BUILD_ROOT/$installarchlib
-perl -pi -e "s|^(INSTALLMAN1DIR\s=\s/usr/share/man/man1)|INSTALLMAN1DIR = \\$\(PREFIX\)/share/man/man1|" $RPM_BUILD_DIR/%{name}-%{version}/Makefile
+perl -pi -e "s|^(INSTALLMAN1DIR\s=\s/usr/share/man/man1)|INSTALLMAN1DIR = \\$\(PREFIX\)/share/man/man1|" $RPM_BUILD_DIR/swatchdog-%{version}/Makefile
 %{makeinstall_std}
-install tools/swatch_oldrc2newrc -D $RPM_BUILD_ROOT%{_bindir}/swatch_oldrc2newrc
+ln -s swatchdog $RPM_BUILD_ROOT%{_bindir}/swatch
+# man follows the upstream rename; keep the historical name working.
+mkdir -p $RPM_BUILD_ROOT%{_mandir}/man1
+echo '.so man1/swatchdog.1' > $RPM_BUILD_ROOT%{_mandir}/man1/swatch.1
 
 mkdir -p %{buildroot}%{_sysconfdir}
 bzcat %{SOURCE1} >> %{buildroot}%{_sysconfdir}/swatchrc
 
-bzcat %{SOURCE2} >> $RPM_BUILD_DIR/%{name}-%{version}/README-Mandrake
+bzcat %{SOURCE2} >> $RPM_BUILD_DIR/swatchdog-%{version}/README-Mandrake
 
 rm -rf $RPM_BUILD_ROOT%{perl_vendorlib}/auto
 
@@ -54,13 +58,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc CHANGES INSTALL COPYRIGHT KNOWN_BUGS README* examples tools
+%doc CHANGES INSTALL COPYRIGHT KNOWN_BUGS README* examples
 %{_bindir}/swatch
-%{_bindir}/swatch_oldrc2newrc
+%{_bindir}/swatchdog
 %{_mandir}/man?/*
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/swatchrc
-%dir %{perl_vendorlib}/Swatch
-%{perl_vendorlib}/Swatch/*
+%dir %{perl_vendorlib}/Swatchdog
+%{perl_vendorlib}/Swatchdog/*
 
 
 %changelog
